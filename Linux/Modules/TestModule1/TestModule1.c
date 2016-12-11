@@ -2,9 +2,18 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 
+//module parameters
+static int test_param1=442;
+module_param(test_param1, int, 0644);
+
+static uint test_param2=0xFFFFFFFF;
+module_param(test_param2, uint, 0644);
+
+
 int init_module(void)
 {
-	printk(KERN_INFO "INIT_MODULE enter\n");
+	printk(KERN_INFO "INIT_MODULE enter %d, %u\n",
+		test_param1, test_param2);
 	printk(KERN_INFO "INIT_MODULE leave\n");
 	return 0;
 }
@@ -12,14 +21,11 @@ int init_module(void)
 void cleanup_module(void)
 {
 	printk(KERN_INFO "CLEANUP_MODULE enter\n");
-	printk(KERN_INFO "CLEANUP_MODULE leave\n");
+	printk(KERN_INFO "CLEANUP_MODULE leave %d, %u\n",
+		test_param1, test_param2);
 }
 
-static int test_param1=442;
-module_param(test_param1, int, 0644);
 
-static uint test_param2=0xFFFFFFFF;
-module_param(test_param2, uint, 0644);
 
 MODULE_LICENSE("GPL"); 
 MODULE_AUTHOR("Pavlo M");
