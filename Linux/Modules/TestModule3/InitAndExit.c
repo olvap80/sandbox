@@ -1,6 +1,6 @@
-
+#include "Common.h"
 #include <linux/module.h>
-#include <linux/kernel.h>
+
 
 //module parameters
 static int test_param1=4422;
@@ -14,6 +14,12 @@ static int __init OnInitModule(void)
 {
 	printk(KERN_INFO "INIT_MODULE3 enter %d, %u\n",
 		test_param1, test_param2);
+
+	{ int a = 10, b = 20;
+	  CHECKED(a < b,INFO,printk(KERN_INFO "ACTION a < b"));
+	  CHECKED(a > b,INFO,printk(KERN_INFO "ACTION a > b"));
+	}
+
 	printk(KERN_INFO "INIT_MODULE3 leave\n");
 	return 0;
 }
@@ -21,6 +27,9 @@ static int __init OnInitModule(void)
 static void __exit OnExitModule(void)
 {
 	printk(KERN_INFO "CLEANUP_MODULE3 enter\n");
+
+	
+
 	printk(KERN_INFO "CLEANUP_MODULE3 leave %d, %u\n",
 		test_param1, test_param2);
 }
