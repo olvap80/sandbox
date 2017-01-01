@@ -14,6 +14,9 @@ static int __init OnInitModule(void)
 {
 	printk(KERN_INFO "INIT_MODULE3 enter %d, %u\n",
 		test_param1, test_param2);
+
+	//TODO
+
 	printk(KERN_INFO "INIT_MODULE3 leave\n");
 	return 0;
 }
@@ -21,6 +24,9 @@ static int __init OnInitModule(void)
 static void __exit OnExitModule(void)
 {
 	printk(KERN_INFO "CLEANUP_MODULE3 enter\n");
+
+	//TODO
+
 	printk(KERN_INFO "CLEANUP_MODULE3 leave %d, %u\n",
 		test_param1, test_param2);
 }
