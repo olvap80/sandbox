@@ -1,5 +1,7 @@
-COMPILE_CPP = g++ -c -o
-LINK_TO_EXE = g++ -o
+COMPILER_OPTIONS = -pthread
+LINKER_OPTIONS = -pthread
+COMPILE_CPP = g++ $(COMPILER_OPTIONS) -c -o
+LINK_TO_EXE = g++ $(LINKER_OPTIONS) -o
 
 .PHONY: clean
 
