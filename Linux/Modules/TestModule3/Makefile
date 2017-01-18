@@ -26,8 +26,13 @@ clean:
 .PHONY: modules modules_install clean
 
 else
-    # called from kernel build system: just declare what our modules are
+	# called from kernel build system
+
+	# use modern C for compilation
+	ccflags-y += -std=gnu99
+
+	# just declare what our modules are
     obj-m := TestModule3.o
     TestModule3-objs := InitAndExit.o FileOperations.o
-    
+
 endif
